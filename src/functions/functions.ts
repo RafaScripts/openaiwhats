@@ -77,35 +77,31 @@ export async function sendWhatsRes(message, number) {
 async function translateReciveFromAPI(mensage){
 
   const encodedParams = new URLSearchParams();
-  encodedParams.append("q", mensage);
-  encodedParams.append("target", "pt");
-  encodedParams.append("source", "en");
-
-  let text;
+  encodedParams.append("text", mensage);
+  encodedParams.append("to", "pt");
+  encodedParams.append("from", "en");
 
   const options = {
     method: 'POST',
-    url: 'https://google-translate1.p.rapidapi.com/language/translate/v2',
+    url: 'https://nlp-translation.p.rapidapi.com/v1/translate',
     headers: {
       'content-type': 'application/x-www-form-urlencoded',
-      'Accept-Encoding': 'application/gzip',
       'X-RapidAPI-Key': '0e0c63700emsh5ba4628c0e1e9f9p16284fjsnd25efb3adf2d',
-      'X-RapidAPI-Host': 'google-translate1.p.rapidapi.com'
+      'X-RapidAPI-Host': 'nlp-translation.p.rapidapi.com'
     },
     data: encodedParams
   };
 
-
+  let text;
 
   //@ts-ignore
   await axios.request(options).then(function (response) {
     console.log(response.data);
     const res = response.data;
-    res.data.translations.map((item) => {
-      if(item.translatedText){
-        text = item.translatedText;
-      }
-    });
+    text = res.translated_text;
+    console.log(text);
+    text = text.pt;
+    console.log(text);
   }).catch(function (error) {
     console.error(error);
   });
@@ -115,35 +111,31 @@ async function translateReciveFromAPI(mensage){
 
 async function translateReciveFromWhats(mensage){
   const encodedParams = new URLSearchParams();
-  encodedParams.append("q", mensage);
-  encodedParams.append("target", "en");
-  encodedParams.append("source", "pt");
-
-  let text;
+  encodedParams.append("text", mensage);
+  encodedParams.append("to", "en");
+  encodedParams.append("from", "pt");
 
   const options = {
     method: 'POST',
-    url: 'https://google-translate1.p.rapidapi.com/language/translate/v2',
+    url: 'https://nlp-translation.p.rapidapi.com/v1/translate',
     headers: {
       'content-type': 'application/x-www-form-urlencoded',
-      'Accept-Encoding': 'application/gzip',
       'X-RapidAPI-Key': '0e0c63700emsh5ba4628c0e1e9f9p16284fjsnd25efb3adf2d',
-      'X-RapidAPI-Host': 'google-translate1.p.rapidapi.com'
+      'X-RapidAPI-Host': 'nlp-translation.p.rapidapi.com'
     },
     data: encodedParams
   };
 
-
+  let text;
 
   //@ts-ignore
   await axios.request(options).then(function (response) {
     console.log(response.data);
     const res = response.data;
-    res.data.translations.map((item) => {
-      if(item.translatedText){
-        text = item.translatedText;
-      }
-    });
+    text = res.translated_text;
+    console.log(text);
+    text = text.en;
+    console.log(text);
   }).catch(function (error) {
     console.error(error);
   });
