@@ -10,10 +10,6 @@ app.get('/', (req, res) => {
   console.log("body: ",req.body);
   console.log(" ");
   console.log("query: ",req.query);
-  console.log(" ");
-  console.log("params: ",req.params);
-  console.log(" ");
-  console.log("headers: ",req.headers);
 
   res.json("");
 });
@@ -22,10 +18,6 @@ app.post('/', (req, res) => {
   console.log("body: ",req.body);
   console.log(" ");
   console.log("query: ",req.query);
-  console.log(" ");
-  console.log("params: ",req.params);
-  console.log(" ");
-  console.log("headers: ",req.headers);
 
   res.json("");
 });
@@ -34,10 +26,6 @@ app.put('/', (req, res) => {
   console.log("body: ",req.body);
   console.log(" ");
   console.log("query: ",req.query);
-  console.log(" ");
-  console.log("params: ",req.params);
-  console.log(" ");
-  console.log("headers: ",req.headers);
 
   res.json("");
 });
@@ -46,10 +34,6 @@ app.delete('/', (req, res) => {
   console.log("body: ",req.body);
   console.log(" ");
   console.log("query: ",req.query);
-  console.log(" ");
-  console.log("params: ",req.params);
-  console.log(" ");
-  console.log("headers: ",req.headers);
 
   res.json("");
 });
